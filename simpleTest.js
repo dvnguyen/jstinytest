@@ -43,7 +43,7 @@
  // DONE: Make failures red.
  // DONE: Show stack traces for failures.
  // DONE: Only show stack traces if you click expand.
- // TODO: Output summary statistics to the DOM.
+ // DONE: Output summary statistics to the DOM.
 
 var TinyTest = {
 
@@ -64,6 +64,13 @@ var TinyTest = {
         setTimeout(function() { // Give document a chance to complete
             if (window.document && document.body) {
                 document.body.style.backgroundColor = (failures == 0 ? '#99ff99' : '#ff9999');
+
+                var numberOfTests = Object.keys(tests).length;
+                var successes = numberOfTests - failures;
+                var summaryString = 'Ran ' + numberOfTests + ' tests: ' + successes + ' successes, ' + failures + ' failures.';
+                var summaryElement = document.createElement('h1');
+                summaryElement.textContent = summaryString;
+                document.body.appendChild(summaryElement);
             }
         }, 0);
     },
