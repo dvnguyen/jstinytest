@@ -37,6 +37,14 @@
  * -Joe Walnes
  * MIT License. See https://github.com/joewalnes/jstinytest/
  */
+
+ // DONE: Get successes to be green
+ // TODO: Show only one error per failure
+ // TODO: Make failures red.
+ // TODO: Show stack traces for failures.
+ // TODO: Only show stack traces if you click expand.
+ // TODO: Output summary statistics to the DOM.
+
 var TinyTest = {
 
     run: function(tests) {
@@ -45,7 +53,7 @@ var TinyTest = {
             var testAction = tests[testName];
             try {
                 testAction.apply(this);
-                console.log('Test:', testName, 'OK');
+                console.log('%c' + testName, 'color: green;');
             } catch (e) {
                 failures++;
                 console.error('Test:', testName, 'FAILED', e);
